@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  */
 @Slf4j
 @RestControllerAdvice
-public class MessageControllerExceptionHandler {
+public class MessageProducerControllerExceptionHandler {
     @ExceptionHandler(KafkaProducerException.class)
     public ResponseEntity<String> handleKafkaException(Exception e) {
         log.error("Kafka error occurred", e);

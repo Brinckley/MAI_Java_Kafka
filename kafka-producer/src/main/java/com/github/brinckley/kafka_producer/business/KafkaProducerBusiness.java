@@ -6,7 +6,7 @@ import com.github.brinckley.kafka_producer.model.KafkaMessage;
 /**
  * Business logic of the kafka producer
  */
-public interface KafkaBusiness {
+public interface KafkaProducerBusiness {
     /**
      * Handle message as kafka producer
      *

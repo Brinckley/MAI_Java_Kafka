@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+src/main/resources/cert.pem
+src/main/resources/keystore_reg.pfx
+src/main/resources/application.properties

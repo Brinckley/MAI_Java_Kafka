@@ -8,7 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Message for sending to Kafka
+ * Message format to receive from user
  */
 @Data
 @Builder
