@@ -26,6 +26,9 @@ public class KafkaConfig {
     @Value("${consumer.group.id}")
     private String consumerGroupId;
 
+    @Value("${consumer.auto-offset-reset}")
+    private String autoOffsetReset;
+
     @Value("${security.protocol}")
     private String securityProtocol;
 

@@ -25,7 +25,7 @@ import java.util.concurrent.Executors;
 @Slf4j
 @Service
 public class ConsumerExecutorServiceImpl implements ConsumerExecutorService {
-    private static final int TIMEOUT_MILLIS = 100;
+    private static final int TIMEOUT_MILLIS = 10000;
 
     private static final Duration POLL_TIMEOUT_DURATION = Duration.ofMillis(TIMEOUT_MILLIS);
 
@@ -78,15 +78,13 @@ public class ConsumerExecutorServiceImpl implements ConsumerExecutorService {
         kafkaProperties.put("key.deserializer", kafkaConfig.getKeyDeserializer());
         kafkaProperties.put("value.deserializer", kafkaConfig.getValueDeserializer());
         kafkaProperties.put("group.id", kafkaConfig.getConsumerGroupId());
-
+        kafkaProperties.put("consumer.auto-offset-reset", kafkaConfig.getAutoOffsetReset());
 
         // SSL
         kafkaProperties.put("security.protocol", kafkaConfig.getSecurityProtocol());
-        kafkaProperties.put("ssl.truststore.location", "D:\\GitHub\\MAI_Java_Kafka\\kafka-consumer\\src\\main\\resources\\kafka.keystore.jks");
-        // kafkaProperties.put("ssl.truststore.location", kafkaConfig.getSslTrustStoreLocation());
+        kafkaProperties.put("ssl.truststore.location", kafkaConfig.getSslTrustStoreLocation());
         kafkaProperties.put("ssl.truststore.password", kafkaConfig.getSslTruststorePassword());
-        kafkaProperties.put("ssl.keystore.location", "D:\\GitHub\\MAI_Java_Kafka\\kafka-consumer\\src\\main\\resources\\kafka.keystore.jks");
-        // kafkaProperties.put("ssl.keystore.location", kafkaConfig.getSslKeystoreLocation());
+        kafkaProperties.put("ssl.keystore.location", kafkaConfig.getSslKeystoreLocation());
         kafkaProperties.put("ssl.keystore.password", kafkaConfig.getSslKeystorePassword());
         kafkaProperties.put("ssl.key.password", kafkaConfig.getSslKeyPassword());
 

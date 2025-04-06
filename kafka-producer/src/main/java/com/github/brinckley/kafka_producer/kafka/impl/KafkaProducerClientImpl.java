@@ -51,11 +51,9 @@ public class KafkaProducerClientImpl implements KafkaProducerClient {
 
         // SSL
         kafkaProperties.put("security.protocol", kafkaConfig.getSecurityProtocol());
-        kafkaProperties.put("ssl.truststore.location", "D:\\GitHub\\MAI_Java_Kafka\\kafka-producer\\src\\main\\resources\\kafka.keystore.jks");
-        // kafkaProperties.put("ssl.truststore.location", kafkaConfig.getSslTrustStoreLocation());
+        kafkaProperties.put("ssl.truststore.location", kafkaConfig.getSslTrustStoreLocation());
         kafkaProperties.put("ssl.truststore.password", kafkaConfig.getSslTruststorePassword());
-        kafkaProperties.put("ssl.keystore.location", "D:\\GitHub\\MAI_Java_Kafka\\kafka-producer\\src\\main\\resources\\kafka.keystore.jks");
-        // kafkaProperties.put("ssl.keystore.location", kafkaConfig.getSslKeystoreLocation());
+        kafkaProperties.put("ssl.keystore.location", kafkaConfig.getSslKeystoreLocation());
         kafkaProperties.put("ssl.keystore.password", kafkaConfig.getSslKeystorePassword());
         kafkaProperties.put("ssl.key.password", kafkaConfig.getSslKeyPassword());
 
