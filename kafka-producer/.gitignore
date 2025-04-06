@@ -32,6 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+/target
+
 src/main/resources/cert.pem
 src/main/resources/keystore_reg.pfx
+src/main/resources/kafka.keystore.jks
 src/main/resources/application.properties

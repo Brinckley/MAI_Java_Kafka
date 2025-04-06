@@ -1,25 +1,33 @@
 package com.github.brinckley.kafka_consumer.controller;
 
+import com.github.brinckley.kafka_consumer.business.KafkaConsumerBusiness;
+import com.github.brinckley.kafka_consumer.model.KafkaMessage;
+import com.github.brinckley.kafka_consumer.model.KafkaResponseMessageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Rest controller for user to communicate with kafka
+ */
 @Slf4j
 @RestController
 @RequestMapping("kafka")
 @RequiredArgsConstructor
 public class MessageConsumerController {
-    private final KafkaConsumeBusiness kafkaBusiness;
+    private final KafkaConsumerBusiness kafkaBusiness;
 
     @GetMapping("/consume")
-    public void publishMessage() {
-        log.info("Message received to the endpoint /publish with content {}", messageRequestDto);
+    public ResponseEntity<KafkaResponseMessageDto> publishMessage() {
+        KafkaMessage kafkaMessage = kafkaBusiness.consumeMessage();
+        KafkaResponseMessageDto kafkaResponseMessageDto = KafkaResponseMessageDto.from(kafkaMessage);
 
-        KafkaMessage kafkaMessage = KafkaMessage.builder().message(messageRequestDto.getMessage()).build();
-        kafkaBusiness.handleMessage(kafkaMessage);
+        return ResponseEntity.ok()
+                .body(kafkaResponseMessageDto);
     }
 }
