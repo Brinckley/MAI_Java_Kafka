@@ -21,7 +21,7 @@ public class KafkaConsumerBusinessImpl implements KafkaConsumerBusiness {
     private final MessageRepository messageRepository;
 
     @Override
-    public KafkaMessage consumeMessage() throws KafkaConsumerException {
+    public KafkaMessage consumeLatestMessage() throws KafkaConsumerException {
         Optional<KafkaConsumerMessage> latestMessage = messageRepository.getLatestMessage();
         String message = latestMessage.isPresent() ? latestMessage.get().getValue() : NO_DATA_MESSAGE;
 

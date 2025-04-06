@@ -23,6 +23,9 @@ public class KafkaConfig {
     @Value("${value.deserializer}")
     private String valueDeserializer;
 
+    @Value("${consumer.group.id}")
+    private String consumerGroupId;
+
     @Value("${security.protocol}")
     private String securityProtocol;
 

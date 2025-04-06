@@ -1,6 +1,7 @@
 package com.github.brinckley.kafka_producer.kafka.impl;
 
 import com.github.brinckley.kafka_producer.config.KafkaConfig;
+import com.github.brinckley.kafka_producer.exception.KafkaProducerException;
 import com.github.brinckley.kafka_producer.kafka.KafkaProducerClient;
 import com.github.brinckley.kafka_producer.model.KafkaMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ import java.util.Properties;
 public class KafkaProducerClientImpl implements KafkaProducerClient {
     private final KafkaConfig kafkaConfig;
 
-    private final KafkaProducer<String,String> msgKafkaProducer;
+    private final KafkaProducer<String, KafkaMessage> msgKafkaProducer;
 
     @Autowired
     public KafkaProducerClientImpl(KafkaConfig kafkaConfig) {
@@ -35,7 +36,7 @@ public class KafkaProducerClientImpl implements KafkaProducerClient {
 
         log.info("Sending message {} to topic {}", message, topic);
 
-        ProducerRecord<String,String> msgProducer = new ProducerRecord<>(topic, topic, message.getMessage());
+        ProducerRecord<String, KafkaMessage> msgProducer = new ProducerRecord<>(topic, topic, message);
         msgKafkaProducer.send(msgProducer);
     }
 

@@ -1,5 +1,6 @@
 package com.github.brinckley.kafka_producer.kafka;
 
+import com.github.brinckley.kafka_producer.exception.KafkaProducerException;
 import com.github.brinckley.kafka_producer.model.KafkaMessage;
 
 /**

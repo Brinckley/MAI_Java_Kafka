@@ -17,6 +17,10 @@ public class KafkaProducerBusinessImpl implements KafkaProducerBusiness {
 
     @Override
     public void handleMessage(KafkaMessage kafkaMessage) throws KafkaProducerException {
-        kafkaProducerClient.sendMessage(kafkaMessage);
+        try {
+            kafkaProducerClient.sendMessage(kafkaMessage);
+        } catch (Exception e) {
+            throw KafkaProducerException.format("Unable to send data to kafka error : %s", e.getMessage());
+        }
     }
 }

@@ -77,7 +77,7 @@ public class ConsumerExecutorServiceImpl implements ConsumerExecutorService {
         kafkaProperties.put("bootstrap.servers", kafkaConfig.getBootstrapServers());
         kafkaProperties.put("key.deserializer", kafkaConfig.getKeyDeserializer());
         kafkaProperties.put("value.deserializer", kafkaConfig.getValueDeserializer());
-        kafkaProperties.put("group.id", "1");
+        kafkaProperties.put("group.id", kafkaConfig.getConsumerGroupId());
 
 
         // SSL

@@ -6,9 +6,7 @@ import com.github.brinckley.kafka_consumer.model.KafkaResponseMessageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,8 +21,8 @@ public class MessageConsumerController {
     private final KafkaConsumerBusiness kafkaBusiness;
 
     @GetMapping("/consume")
-    public ResponseEntity<KafkaResponseMessageDto> publishMessage() {
-        KafkaMessage kafkaMessage = kafkaBusiness.consumeMessage();
+    public ResponseEntity<KafkaResponseMessageDto> fetchMessage() {
+        KafkaMessage kafkaMessage = kafkaBusiness.consumeLatestMessage();
         KafkaResponseMessageDto kafkaResponseMessageDto = KafkaResponseMessageDto.from(kafkaMessage);
 
         return ResponseEntity.ok()
